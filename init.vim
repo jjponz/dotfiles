@@ -193,6 +193,8 @@ imap <M-Right> <ESC>:tabn<CR>
 map <M-Left> :tabp<CR>
 imap <M-Left> <ESC>:tabp<CR>
 
+" map ESC to kj
+imap kj <ESC>
 " when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
 

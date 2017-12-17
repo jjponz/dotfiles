@@ -1,0 +1,6 @@
+[columns]
+column_width = 50
+
+[topydo]
+filename = /home/juanjo/Dropbox/Aplicaciones/Simpletask/todo.txt
+archive_filename = ~/Dropbox/Aplicaciones/Simpletask/done.txt

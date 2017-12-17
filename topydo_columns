@@ -1,0 +1,34 @@
+[Citas]
+title = Citas
+filterexpr = +citas
+sortexpr = due,importance
+groupexpr = due
+
+[all]
+title = Todo
+groupexpr = project
+sortexpr = importance
+filterexpr = -+citas -due: -+compras_chinos
+
+[Rutina]
+title = Rutina
+filterexpr = +rutina
+groupexpr = due
+
+[Overdue]
+title = Overdue
+filterexpr = due:<today -+rutina
+groupexpr = due
+sortexpr = due,desc:priority,project,desc:context
+
+[Today]
+title = Today
+filterexpr = due:today -+rutina
+groupexpr = due
+sortexpr = project,importance
+
+[Future]
+title = Futuras
+groupexpr = due
+filterexpr = due:>today -+rutina
+sortexpr = due,desc:priority,project,desc:context

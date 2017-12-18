@@ -56,14 +56,17 @@ Plug 'vim-scripts/IndexedSearch'
 " Terminal Vim with 256 colors colorscheme
 Plug 'fisadev/fisa-vim-colorscheme'
 
+" django-plus
+Plug 'tweekmonster/django-plus.vim'
+
 " Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Code and files fuzzy finder
-" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " Extension to ctrlp, for fuzzy command finder
-" Plug 'fisadev/vim-ctrlp-cmdpalette'
+Plug 'fisadev/vim-ctrlp-cmdpalette'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -136,7 +139,20 @@ Plug 'neomake/neomake'
 " to avoid that)
 Plug 'myusuf3/numbers.vim'
 
+" Tema personal para nvim
+Plug 'nightsense/plumber'
 
+" Tema personal office
+Plug 'nightsense/office'
+
+" Tema pesonal solarized
+Plug 'lifepillar/vim-solarized8'
+
+"Tema personal solarized
+Plug 'altercation/solarized'
+
+"Tema simplify
+Plug 'nightsense/simplifysimplify'
 
 " Tell vim-plug we finished declaring plugins, so it can load them
 call plug#end()
@@ -162,16 +178,13 @@ set shiftwidth=4
 " show line numbers
 set nu
 
+" ESC mapeado a kj
+:imap kj <Esc>
+
 " remove ugly vertical lines on window division
 set fillchars+=vert:\ 
 
-" use 256 colors when possible
-if (&term =~? 'mlterm\|xterm\|xterm-256\|screen-256') || has('nvim')
-	let &t_Co = 256
-    colorscheme fisa
-else
-    colorscheme delek
-endif
+colorscheme solarized8
 
 " needed so deoplete can auto select the first suggestion
 set completeopt+=noinsert
@@ -193,8 +206,6 @@ imap <M-Right> <ESC>:tabn<CR>
 map <M-Left> :tabp<CR>
 imap <M-Left> <ESC>:tabp<CR>
 
-" map ESC to kj
-imap kj <ESC>
 " when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
 
@@ -259,18 +270,18 @@ nmap ,F :Lines<CR>
 " commands finder mapping
 nmap ,c :Commands<CR>
 " to be able to call CtrlP with default search text
-"function! CtrlPWithSearchText(search_text, ctrlp_command_end)
-    "execute ':CtrlP' . a:ctrlp_command_end
-    "call feedkeys(a:search_text)
-"endfunction
+function! CtrlPWithSearchText(search_text, ctrlp_command_end)
+    execute ':CtrlP' . a:ctrlp_command_end
+    call feedkeys(a:search_text)
+endfunction
 " same as previous mappings, but calling with current word as default text
-"nmap ,wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
-"nmap ,wG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
-"nmap ,wf :call CtrlPWithSearchText(expand('<cword>'), 'Line')<CR>
-"nmap ,we :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
-"nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
-"nmap ,wm :call CtrlPWithSearchText(expand('<cword>'), 'MRUFiles')<CR>
-"nmap ,wc :call CtrlPWithSearchText(expand('<cword>'), 'CmdPalette')<CR>
+nmap ,wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
+nmap ,wG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
+nmap ,wf :call CtrlPWithSearchText(expand('<cword>'), 'Line')<CR>
+nmap ,we :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
+nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
+nmap ,wm :call CtrlPWithSearchText(expand('<cword>'), 'MRUFiles')<CR>
+nmap ,wc :call CtrlPWithSearchText(expand('<cword>'), 'CmdPalette')<CR>
 
 
 " Deoplete -----------------------------

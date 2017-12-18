@@ -1,7 +1,7 @@
 [Citas]
 title = Citas
 filterexpr = +citas
-sortexpr = due,importance
+sortexpr = due,text
 groupexpr = due
 
 [all]

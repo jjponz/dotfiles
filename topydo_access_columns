@@ -1,7 +1,7 @@
 [To Do]
 title = To Do
 filterexpr = +access -due: -@week
-groupexpr = due context
+groupexpr = context due 
 
 [Week]
 title = Week

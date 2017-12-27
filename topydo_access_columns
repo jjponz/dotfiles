@@ -1,0 +1,24 @@
+[To Do]
+title = To Do
+filterexpr = +access -due: -@week
+groupexpr = due context
+
+[Week]
+title = Week
+filterexpr = +access @week
+
+[Overdue]
+title = Overdue
+filterexpr = due:<today +access
+groupexpr = due
+sortexpr = due, desc:priority
+
+[Today]
+title = Today
+groupexpr = due
+filterexpr = +access due:today
+
+[Future]
+title = Future
+groupexpr = due
+filterexpr = +access due:>today

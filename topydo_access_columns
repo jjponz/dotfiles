@@ -1,3 +1,7 @@
+[Doing]
+title = Doing
+filterexpr = +access @doing
+
 [To Do]
 title = To Do
 filterexpr = +access -due: -@week

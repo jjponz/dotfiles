@@ -2,10 +2,19 @@
 title = Doing
 filterexpr = +access @doing
 
-[To Do]
-title = To Do
-filterexpr = +access -due: -@week
+[Inbox]
+title = Inbox
+filterexpr = +access
+groupexpr = context
+
+[Without date]
+title = To Do sin fechas
+filterexpr = +access -due: -@week -t: 
 groupexpr = context due 
+
+[Started]
+title = Empezados
+filterexpr = t:<today 
 
 [Week]
 title = Week

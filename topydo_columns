@@ -8,7 +8,7 @@ groupexpr = due
 title = Todo
 groupexpr = project
 sortexpr = importance
-filterexpr = -+citas -due: -+compras_chinos
+filterexpr = -+citas -due: -+compras_chinos -+warehouse_management -+access
 
 [Rutina]
 title = Rutina
@@ -32,3 +32,9 @@ title = Futuras
 groupexpr = due
 filterexpr = due:>today -+rutina
 sortexpr = due,desc:priority,project,desc:context
+
+[warehouse_management]
+title = Warehouse Management
+groupexpr = context
+sortexpr = importance
+filterexpr = +warehouse_management

@@ -1,0 +1,7 @@
+[Artículos]
+title = artículos
+filterexpr = @ansible url:
+
+[Todo]
+title = Todo
+filterexpr = @ansible -url:

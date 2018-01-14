@@ -9,12 +9,13 @@ groupexpr = context
 
 [Without date]
 title = To Do sin fechas
-filterexpr = +access -due: -@week -t: 
+filterexpr = +access -due: -@week -t: -url: 
 groupexpr = context due 
 
 [Started]
-title = Empezados
-filterexpr = t:<today 
+title = Deben de hacerse durante el mes
+filterexpr = +access t: 
+show_all = 1
 
 [Week]
 title = Week

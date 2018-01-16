@@ -17,20 +17,20 @@ groupexpr = due
 
 [Overdue]
 title = Overdue
-filterexpr = due:<today -+rutina
+filterexpr = due:<today -+rutina -+access -ẁarehouse_management
 groupexpr = due
 sortexpr = due,desc:priority,project,desc:context
 
 [Today]
 title = Today
-filterexpr = due:today -+rutina
+filterexpr = due:today -+rutina -+access 
 groupexpr = due
 sortexpr = project,importance
 
 [Future]
 title = Futuras
 groupexpr = due
-filterexpr = due:>today -+rutina
+filterexpr = due:>today -+rutina -+access 
 sortexpr = due,desc:priority,project,desc:context
 
 [warehouse_management]

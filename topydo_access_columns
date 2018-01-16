@@ -2,6 +2,11 @@
 title = Doing
 filterexpr = +access @doing
 
+[Today]
+title = Today
+groupexpr = due
+filterexpr = +access due:today
+
 [Inbox]
 title = Inbox
 filterexpr = +access
@@ -26,11 +31,6 @@ title = Overdue
 filterexpr = due:<today +access
 groupexpr = due
 sortexpr = due, desc:priority
-
-[Today]
-title = Today
-groupexpr = due
-filterexpr = +access due:today
 
 [Future]
 title = Future

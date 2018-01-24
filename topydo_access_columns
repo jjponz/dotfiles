@@ -36,3 +36,7 @@ sortexpr = due, desc:priority
 title = Future
 groupexpr = due
 filterexpr = +access due:>today
+
+[Waiting]
+title = Waiting
+filterexpr = +access @waiting

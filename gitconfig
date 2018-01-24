@@ -1,0 +1,21 @@
+[user]
+    name = Juanjo Ponz
+
+[core]
+    editor = nvim
+
+[merge]
+    tool = vimdiff
+
+[color]
+    ui = true
+
+[diff]
+    tool = meld
+
+[alias]
+    mylog = log --graph --color --decorate --oneline --all
+    myextendedlog = log --graph --pretty=format:\"%C(yellow)%h%C(reset) %C(cyan)%d%C(reset) %s%C(blue) %an (%ar)%C(reset)\" --all
+    retrospective-log = "!f() { git log --graph --pretty=format:\"%C(yellow)%h%C(reset) %C(cyan)%d%C(reset) %s%C(blue) %an (%ar)%C(reset)\" \"master@{$1}\"..master; }; f"
+    retrospective-stat = "!f() { git diff --stat \"master@{$1}\" master; }; f"
+retrospective-diff = "!f() { git diff \"master@{$1}\" master; }; f"

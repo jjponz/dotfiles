@@ -11,6 +11,7 @@ filterexpr = +access due:today
 title = Inbox
 filterexpr = +access
 groupexpr = context
+show_all = 1
 
 [Without date]
 title = To Do sin fechas
@@ -39,4 +40,5 @@ filterexpr = +access due:>today
 
 [Waiting]
 title = Waiting
+show_all = 1
 filterexpr = +access @waiting

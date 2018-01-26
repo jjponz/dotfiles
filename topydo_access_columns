@@ -15,8 +15,9 @@ show_all = 1
 
 [Without date]
 title = To Do sin fechas
-filterexpr = +access -due: -@week -t: -url: 
+filterexpr = +access -due: -@week -t: -url: -@waiting 
 groupexpr = context due 
+show_all = 1
 
 [Started]
 title = Deben de hacerse durante el mes

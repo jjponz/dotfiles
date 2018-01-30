@@ -1,0 +1,28 @@
+[Inbox]
+title = Inbox
+filterexpr = +numenalia
+groupexpr = context
+
+[Doing]
+title = Doing
+filterexpr = +numenalia @doing
+
+[Overdue]
+title = Overdue
+filterexpr = due:<today +numenalia
+groupexpr = due
+sortexpr = due, desc:priority
+
+[Today]
+title = Today
+groupexpr = due
+filterexpr = +numenalia due:today
+
+[Future]
+title = Future
+groupexpr = due
+filterexpr = +numenalia due:>today
+
+[Waiting]
+title = Waiting
+filterexpr = +numenalia @waiting

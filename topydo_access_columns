@@ -38,8 +38,13 @@ sortexpr = due, desc:priority
 title = Future
 groupexpr = due
 filterexpr = +access due:>today
+show_all = 1
 
 [Waiting]
 title = Waiting
 show_all = 1
 filterexpr = +access @waiting
+
+[Prometheus]
+title = Prometheus
+filterexpr = @prometheus

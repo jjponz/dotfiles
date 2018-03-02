@@ -8,7 +8,7 @@ groupexpr = due
 title = Todo
 groupexpr = project
 sortexpr = importance
-filterexpr = -+citas -due: -+compras_chinos -+warehouse_management -+access
+filterexpr = -+citas -due: -+compras_chinos -+warehouse_management -+access -+numenalia
 
 [Rutina]
 title = Rutina
@@ -17,20 +17,20 @@ groupexpr = due
 
 [Overdue]
 title = Overdue
-filterexpr = due:<today -+rutina -+access -ẁarehouse_management
+filterexpr = due:<today -+rutina -+access -ẁarehouse_management -+numenalia
 groupexpr = due
 sortexpr = due,desc:priority,project,desc:context
 
 [Today]
 title = Today
-filterexpr = due:today -+rutina -+access 
+filterexpr = due:today -+rutina -+access -+numenalia
 groupexpr = due
 sortexpr = project,importance
 
 [Future]
 title = Futuras
 groupexpr = due
-filterexpr = due:>today -+rutina -+access 
+filterexpr = due:>today -+rutina -+access-+numenalia
 sortexpr = due,desc:priority,project,desc:context
 
 [warehouse_management]

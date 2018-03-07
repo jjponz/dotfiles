@@ -15,7 +15,7 @@ show_all = 1
 
 [Without date]
 title = To Do sin fechas
-filterexpr = +access -due: -@week -t: -url: -@waiting 
+filterexpr = +access -due: -t: -url: -@waiting 
 groupexpr = context due 
 show_all = 1
 
@@ -23,10 +23,6 @@ show_all = 1
 title = Deben de hacerse durante el mes
 filterexpr = +access t: 
 show_all = 1
-
-[Week]
-title = Week
-filterexpr = +access @week
 
 [Overdue]
 title = Overdue

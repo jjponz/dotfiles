@@ -1,5 +1,6 @@
 [user]
-    name = Juanjo Ponz
+	name = Juanjo ponz
+	email = jjponzva@gmail.com
 
 [core]
     editor = nvim

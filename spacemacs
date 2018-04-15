@@ -100,7 +100,7 @@ values."
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
    ;; whenever you start Emacs. (default nil)
-   dotspacemacs-check-for-update nil
+   dotspacemacs-check-for-update t
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
    ;; to `emacs-version'.
@@ -330,6 +330,7 @@ you should place your code here."
 
   "añadimos company al modo omnisharp"
   (add-hook 'csharp-mode-hook #'company-mode)
+
   "Escapamos a normal mode con kj "
   (setq-default evil-escape-key-sequence "kj")
   "Ruta del ejecutable del omnisharserver"
@@ -338,9 +339,67 @@ you should place your code here."
   (setq tab-width 4)
   "Corregimos el fallo con emacs 25.1 mediante el cual no nos deja crear ficheros y demas con neotree, cuándo actualicemos emacs probamos a quitar la linea de debajo"
   (setq helm-split-window-inside-p t)
-  
 
+  "<spc> jñ ejecuta avy-goto-word-0"
+  (spacemacs/set-leader-keys "jñ" 'avy-goto-word-0)
+
+  "Los archivos de agenda estan en ~/org-mode/"
+  (setq org-agenda-files '("~/Dropbox/org-mode"))
+
+  "Al poner el clock in en una tarea, se pone automaticamente en doing"
+  (setq org-clock-in-switch-to-state "DOING")
+
+  "Al poner el clockout en una tarea, se pone automaticamente en paused"
+  (setq org-clock-out-switch-to-state "PAUSED")
+
+  "El reloj se para cuando una tarea pasa a DONE"
+  (setq org-clock-out-when-done t)
+
+  "Plantillas para org-mode"
+  (setq org-capture-templates '(("t" "Todo [inbox]" entry
+                                 (file+headline "~/Dropbox/org-mode/numenalia.org" "Inbox")
+                                 "* TODO %?\nCREATED: %u\n%a")))
+
+  "Vistas para las agendas"
+  (setq org-agenda-custom-commands
+        `(
+          ("w" "Weekly Action List"
+           ((agenda ""
+                    ((org-agenda-ndays 7)
+                     (org-agenda-sorting-strategy
+                      (quote ((agenda time-up priority-down tag-up))))
+                     (org-deadline-warning-days 0)))))
+          ("z" "Weekly Action List without warnings"
+           ((agenda ""
+                    ((org-agenda-ndays 7)
+                     (org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo '("TODO-DT")))
+                     (org-agenda-sorting-strategy
+                      (quote ((agenda time-up priority-down tag-up))))
+                     (org-deadline-warning-days 0)))))
+    ))
+
+  "Vamos a ver si conseguimos que los parentesis se coloreen como dios manda"
+  (set-face-attribute 'show-paren-match nil :background "#FF0000")
+  (set-face-attribute 'show-paren-match nil :foreground "#1D1F21")
+  (set-face-attribute 'show-paren-match nil :underline  t        )
+
+  "Al salir de emacs automáticamente para el reloj y guarda el archivo org sobre el que se este ejecutando"
+  (defun org-clock-out-maybe ()
+    "Stop a currently running clock."
+    (org-clock-out nil t)
+    (org-save-all-org-buffers))
+  (add-hook 'kill-emacs-hook 'org-clock-out-maybe)
+
+  "Añadimos org-clock a modeline"
+  (setq spaceline-org-clock-p t)
+
+  "Configuramos que los pomodoro van a ser de 40 minutos"
+  (setq org-pomodoro-length 40)
+
+  "Habilitamos paren-mode, modo para encontrar las parejas de los parentesis"
+  (show-paren-mode 1)
   )
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

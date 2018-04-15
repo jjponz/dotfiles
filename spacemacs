@@ -334,7 +334,7 @@ you should place your code here."
   "Escapamos a normal mode con kj "
   (setq-default evil-escape-key-sequence "kj")
   "Ruta del ejecutable del omnisharserver"
-  (setq-default omnisharp-server-executable-path "~/Descargas/omnisharp-linux-x64/run")
+  (setq-default omnisharp-server-executable-path "~/Dropbox/omnisharp-linux-x64/run")
   "Las tabulaciones son siempre 4 espacios"
   (setq tab-width 4)
   "Corregimos el fallo con emacs 25.1 mediante el cual no nos deja crear ficheros y demas con neotree, cuándo actualicemos emacs probamos a quitar la linea de debajo"
@@ -393,8 +393,8 @@ you should place your code here."
   "Añadimos org-clock a modeline"
   (setq spaceline-org-clock-p t)
 
-  "Configuramos que los pomodoro van a ser de 40 minutos"
-  (setq org-pomodoro-length 40)
+  "Configuramos que los pomodoro van a ser de 45 minutos"
+  (setq org-pomodoro-length 45)
 
   "Habilitamos paren-mode, modo para encontrar las parejas de los parentesis"
   (show-paren-mode 1)

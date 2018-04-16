@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     yaml
      elpy
      (python :variables python-enable-yapf-format-on-save t)
      sql
@@ -368,11 +369,10 @@ you should place your code here."
                     ((org-agenda-ndays 7)
                      (org-agenda-sorting-strategy
                       (quote ((agenda time-up priority-down tag-up))))
-                     (org-deadline-warning-days 0)))))
+                     (org-deadline-warning-days 7)))))
           ("z" "Weekly Action List without warnings"
            ((agenda ""
                     ((org-agenda-ndays 7)
-                     (org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo '("TODO-DT")))
                      (org-agenda-sorting-strategy
                       (quote ((agenda time-up priority-down tag-up))))
                      (org-deadline-warning-days 0)))))

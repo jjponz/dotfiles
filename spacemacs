@@ -359,7 +359,15 @@ you should place your code here."
   "Plantillas para org-mode"
   (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                  (file+headline "~/Dropbox/org-mode/numenalia.org" "Inbox")
-                                 "* TODO %?\nCREATED: %u\n%a")))
+                                 "* TODO %?\nCREATED: %u\n%a")
+                                ("n" "Note [inbox]" entry
+                                 (file+headline "~/Dropbox/org-mode/numenalia.org" "Inbox")
+                                 "** %?\nCREATED: %u\n%a")))
+
+  "Personalizo los colores para DOING y PAUSED"
+  (setq org-todo-keyword-faces
+        '(("DOING" . (:foreground "orange" :weight bold))
+          ("PAUSED" . (:foreground "yellow"))))
 
   "Vistas para las agendas"
   (setq org-agenda-custom-commands

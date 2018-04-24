@@ -426,6 +426,12 @@ you should place your code here."
   (doom-themes-neotree-config) ; all-the-icons fonts must be installed!
   (doom-themes-org-config) ; Corrects (and improves) org-mode's native fontification.
   (load-theme 'doom-dracula t)
+
+  "Configuración de los lenguajes de google-translate"
+  (setq google-translate-translation-directions-alist
+        '(("en" . "es") ("es" . "en"))
+  )
+
   )
 
 

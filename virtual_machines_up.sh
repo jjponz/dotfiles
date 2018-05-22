@@ -30,6 +30,7 @@ case "$1" in
         ;;
     list)
         ls -lha $HOME/$VIRTUAL_MACHINES_RELATIVE_HOMEPATH
+        exit
         ;;
     *)
         usage

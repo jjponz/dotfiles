@@ -27,9 +27,15 @@ case "$1" in
     up)
         VIRTUAL_MACHINE=$2
         cd $HOME/$VIRTUAL_MACHINES_RELATIVE_HOMEPATH/$VIRTUAL_MACHINE && vagrant up
+        exit
         ;;
     list)
         ls -lha $HOME/$VIRTUAL_MACHINES_RELATIVE_HOMEPATH
+        exit
+        ;;
+    ssh)
+        VIRTUAL_MACHINE=$2
+        cd $HOME/$VIRTUAL_MACHINES_RELATIVE_HOMEPATH/$VIRTUAL_MACHINE && vagrant ssh
         exit
         ;;
     *)

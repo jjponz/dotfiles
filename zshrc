@@ -97,5 +97,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 alias virtual_machine_up="~/git/dotfiles/virtual_machines_up.sh"
+function sshconnect() {
+  ssh $1 -t tmux new -A -s jjpv
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

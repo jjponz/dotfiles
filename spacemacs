@@ -32,7 +32,6 @@ values."
    dotspacemacs-configuration-layers
    '(
      yaml
-     elpy
      (python :variables python-enable-yapf-format-on-save t)
      sql
      django
@@ -360,7 +359,7 @@ you should place your code here."
   "Plantillas para org-mode"
   (setq org-capture-templates '(("t" "Todo numenalia [inbox]" entry
                                  (file+headline "~/Dropbox/org-mode/numenalia.org" "Inbox")
-                                 "* TODO %?\n\tCREATED: %u\n%a")
+                                 "* TODO %?\n\tCREATED: %u\n\t:LOGBOOK:\n\t:END:")
                                 ("n" "Note numenalia[inbox]" entry
                                  (file+headline "~/Dropbox/org-mode/numenalia.org" "Inbox")
                                  "** %?\n\tCREATED: %u\n%a")
@@ -431,7 +430,11 @@ you should place your code here."
   (setq google-translate-translation-directions-alist
         '(("en" . "es") ("es" . "en"))
   )
+  (setq google-translate-default-source-language "en")
+  (setq google-translate-default-target-language "es")
 
+  "Tabular hace company-complete o tabula"
+  (global-set-key (kbd "<backtab>") 'company-complete-common-or-cycle)
   )
 
 
@@ -444,7 +447,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (jinja2-mode company-ansible ansible-doc ansible doom-city-lights-theme doom-themes all-the-icons memoize yaml-mode jedi jedi-core python-environment epc ctable concurrent deferred elpy find-file-in-project ivy pony-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic company-quickhelp powerline spinner org-category-capture alert log4e gntp org-plus-contrib shut-up hydra parent-mode projectile request gitignore-mode fringe-helper git-gutter+ git-gutter flyspell-correct pos-tip flycheck pkg-info epl flx magit-popup git-commit let-alist with-editor smartparens iedit anzu evil goto-chg undo-tree highlight f s csharp-mode company bind-map bind-key yasnippet packed helm avy helm-core async auto-complete popup helm-projectile magit xterm-color ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org sql-indent spaceline solarized-theme smeargle shell-pop restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file omnisharp neotree mwim multi-term move-text magit-gitflow macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ghub fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump diminish diff-hl define-word company-statistics column-enforce-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (dash jinja2-mode company-ansible ansible-doc ansible doom-city-lights-theme doom-themes all-the-icons memoize yaml-mode jedi jedi-core python-environment epc ctable concurrent deferred elpy find-file-in-project ivy pony-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic company-quickhelp powerline spinner org-category-capture alert log4e gntp org-plus-contrib shut-up hydra parent-mode projectile request gitignore-mode fringe-helper git-gutter+ git-gutter flyspell-correct pos-tip flycheck pkg-info epl flx magit-popup git-commit let-alist with-editor smartparens iedit anzu evil goto-chg undo-tree highlight f s csharp-mode company bind-map bind-key yasnippet packed helm avy helm-core async auto-complete popup helm-projectile magit xterm-color ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org sql-indent spaceline solarized-theme smeargle shell-pop restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file omnisharp neotree mwim multi-term move-text magit-gitflow macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ghub fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump diminish diff-hl define-word company-statistics column-enforce-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

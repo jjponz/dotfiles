@@ -3,7 +3,7 @@
 	email = jjponzva@gmail.com
 
 [core]
-    editor = nvim
+    editor = vim
 
 [merge]
     tool = vimdiff

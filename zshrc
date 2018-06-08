@@ -101,4 +101,6 @@ function sshconnect() {
   ssh $1 -t tmux new -A -s jjpv
 }
 
+alias ps_order_by_cpu="ps aux --sort -%cpu | less"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -412,7 +412,7 @@ you should place your code here."
   (setq spaceline-org-clock-p t)
 
   "Configuramos que los pomodoro van a ser de 45 minutos"
-  (setq org-pomodoro-length 45)
+  (setq org-pomodoro-length 30)
 
   "Habilitamos paren-mode, modo para encontrar las parejas de los parentesis"
   (show-paren-mode 1)
@@ -424,7 +424,7 @@ you should place your code here."
   (doom-themes-visual-bell-config)
   (doom-themes-neotree-config) ; all-the-icons fonts must be installed!
   (doom-themes-org-config) ; Corrects (and improves) org-mode's native fontification.
-  (load-theme 'doom-dracula t)
+;; esto es necesario para correr el doom-dracula  (load-theme 'doom-dracula t)
 
   "Configuración de los lenguajes de google-translate"
   (setq google-translate-translation-directions-alist

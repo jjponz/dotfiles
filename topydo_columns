@@ -1,40 +1,17 @@
-[Citas]
-title = Citas
-filterexpr = +citas
-sortexpr = due,text
-groupexpr = due
-
 [all]
-title = Todo
+title = access - todo
+filterexpr = @access -+despegar
 groupexpr = project
+
+[despegar]
+title = despegar
 sortexpr = importance
-filterexpr = -+citas -due: -+compras_chinos -+warehouse_management -+access -+numenalia
+filterexpr = +despegar
+sortexpr = asc:due
 
-[Rutina]
-title = Rutina
-filterexpr = +rutina
-groupexpr = due
+[today]
+title = Hoy
+filterexpr = @access due:today -+despegar
+groupexpr = projects
 
-[Overdue]
-title = Overdue
-filterexpr = due:<today -+rutina -+access -ẁarehouse_management -+numenalia
-groupexpr = due
-sortexpr = due,desc:priority,project,desc:context
 
-[Today]
-title = Today
-filterexpr = due:today -+rutina -+access -+numenalia
-groupexpr = due
-sortexpr = project,importance
-
-[Future]
-title = Futuras
-groupexpr = due
-filterexpr = due:>today -+rutina -+access-+numenalia
-sortexpr = due,desc:priority,project,desc:context
-
-[warehouse_management]
-title = Warehouse Management
-groupexpr = context
-sortexpr = importance
-filterexpr = +warehouse_management

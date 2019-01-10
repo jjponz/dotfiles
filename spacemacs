@@ -335,12 +335,15 @@ you should place your code here."
   "añadimos company al modo omnisharp"
   (add-hook 'csharp-mode-hook #'company-mode)
 
-  "Escapamos a normal mode con kj "
-  (setq-default evil-escape-key-sequence "kj")
   "Ruta del ejecutable del omnisharserver"
   (setq-default omnisharp-server-executable-path "~/Dropbox/omnisharp-linux-x64/run")
+
+  "Escapamos a normal mode con kj "
+  (setq-default evil-escape-key-sequence "kj")
+
   "Las tabulaciones son siempre 4 espacios"
   (setq tab-width 4)
+
   "Corregimos el fallo con emacs 25.1 mediante el cual no nos deja crear ficheros y demas con neotree, cuándo actualicemos emacs probamos a quitar la linea de debajo"
   (setq helm-split-window-inside-p t)
 
@@ -351,13 +354,13 @@ you should place your code here."
   (setq org-agenda-files '("~/Dropbox/org-mode"))
 
   "Al poner el clock in en una tarea, se pone automaticamente en doing"
-  (setq org-clock-in-switch-to-state "DOING")
+  ;; (setq org-clock-in-switch-to-state "DOING")
 
   "Al poner el clockout en una tarea, se pone automaticamente en paused"
-  (setq org-clock-out-switch-to-state "PAUSED")
+  ;; (setq org-clock-out-switch-to-state "PAUSED")
 
   "El reloj se para cuando una tarea pasa a DONE"
-  (setq org-clock-out-when-done t)
+  ;; (setq org-clock-out-when-done t)
 
   "Plantillas para org-mode"
   (setq org-capture-templates '(("t" "Todo numenalia [inbox]" entry
@@ -375,12 +378,16 @@ you should place your code here."
   (setq org-todo-keyword-faces
         '(("DOING" . (:foreground "orange" :weight bold))
           ("TODO" . (:foreground "IndianRed1" :weight bold))
-          ("WAIT" . (:foreground "yellow" :weight bold))
+          ("WAIT" . (:foreground "yellow" :weight normal))
           ("INDATE" . (:foreground "IndianRed1" :weight bold))
           ("PAUSED" . (:foreground "yellow"))
           ("NEXT" . (:foreground "red" :weight bold))
           ("DONE" . (:foreground "green" :weight bold))
           ))
+
+  "omitimos los elementos done en la agenda"
+  ;; (setq org-agenda-skip-scheduled-if-done t
+  ;;       org-agenda-skip-deadline-if-done  t)
 
   "Vistas para las agendas"
   (setq org-agenda-custom-commands
@@ -388,6 +395,7 @@ you should place your code here."
           ("w" "Weekly Action List"
            ((agenda ""
                     ((org-agenda-ndays 7)
+                     (org-agenda-skip-scheduled-if-done t)
                      (org-agenda-sorting-strategy
                       (quote ((agenda time-up priority-down tag-up))))
                      (org-deadline-warning-days 7)))))
@@ -458,3 +466,25 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(package-selected-packages
+   (quote
+    (seeing-is-believing ruby-refactor ruby-hash-syntax prettier-js json-navigator hierarchy livid-mode skewer-mode json-mode js2-refactor multiple-cursors company-tern web-beautify simple-httpd json-snatcher json-reformat js2-mode js-doc tern coffee-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake puppet-mode minitest chruby bundler inf-ruby mmm-mode markdown-toc markdown-mode gh-md dash jinja2-mode company-ansible ansible-doc ansible doom-city-lights-theme doom-themes all-the-icons memoize yaml-mode jedi jedi-core python-environment epc ctable concurrent deferred elpy find-file-in-project ivy pony-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic company-quickhelp powerline spinner org-category-capture alert log4e gntp org-plus-contrib shut-up hydra parent-mode projectile request gitignore-mode fringe-helper git-gutter+ git-gutter flyspell-correct pos-tip flycheck pkg-info epl flx magit-popup git-commit let-alist with-editor smartparens iedit anzu evil goto-chg undo-tree highlight f s csharp-mode company bind-map bind-key yasnippet packed helm avy helm-core async auto-complete popup helm-projectile magit xterm-color ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org sql-indent spaceline solarized-theme smeargle shell-pop restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file omnisharp neotree mwim multi-term move-text magit-gitflow macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ghub fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump diminish diff-hl define-word company-statistics column-enforce-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-level-2 ((t (:inherit bold :foreground "#2d9574" :weight normal :height 1.1))))
+ '(org-scheduled-previously ((t (:foreground "gold" :slant italic)))))
+)

@@ -392,18 +392,22 @@ you should place your code here."
   "Vistas para las agendas"
   (setq org-agenda-custom-commands
         `(
-          ("w" "Weekly Action List"
+          ("w" "Access weekly agenda"
            ((agenda ""
                     ((org-agenda-ndays 7)
                      (org-agenda-skip-scheduled-if-done t)
+                     (org-agenda-skip-deadline-if-done  t)
                      (org-agenda-sorting-strategy
                       (quote ((agenda time-up priority-down tag-up))))
                      (org-deadline-warning-days 7)))))
-          ("z" "Weekly Action List without warnings"
+          ("z" "Numenalia weekly agenda"
            ((agenda ""
                     ((org-agenda-ndays 7)
+                     (org-agenda-files (quote ("~/Dropbox/org-mode/numenalia.org")))
+                     (org-agenda-skip-scheduled-if-done t)
+                     (org-agenda-skip-deadline-if-done  t)
                      (org-agenda-sorting-strategy
-                      (quote ((agenda time-up priority-down tag-up))))
+                      (quote ((tag-up agenda time-up priority-down))))
                      (org-deadline-warning-days 0)))))
     ))
 
@@ -465,7 +469,8 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(org-level-2 ((t (:inherit nil :foreground "#2d9574" :height 1.1))))
+ '(org-scheduled-today ((t (:foreground "#bc6ec5" :height 1.0)))))
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use

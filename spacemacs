@@ -354,10 +354,10 @@ you should place your code here."
   (setq org-agenda-files '("~/Dropbox/org-mode"))
 
   "Al poner el clock in en una tarea, se pone automaticamente en doing"
-  ;; (setq org-clock-in-switch-to-state "DOING")
+  (setq org-clock-in-switch-to-state "DOING")
 
   "Al poner el clockout en una tarea, se pone automaticamente en paused"
-  ;; (setq org-clock-out-switch-to-state "PAUSED")
+  (setq org-clock-out-switch-to-state "PAUSED")
 
   "El reloj se para cuando una tarea pasa a DONE"
   ;; (setq org-clock-out-when-done t)
@@ -450,6 +450,9 @@ you should place your code here."
 
   "Tabular hace company-complete o tabula"
   (global-set-key (kbd "<backtab>") 'company-complete-common-or-cycle)
+
+  "Habilitamos truncate line al inicio"
+  (setq-default truncate-lines t)
   )
 
 

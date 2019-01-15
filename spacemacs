@@ -473,6 +473,9 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ ;; '(org-column ((t (:background "black"))))
+ '(org-column ((t (:background nil))))
+ 
  '(org-level-2 ((t (:inherit nil :foreground "#2d9574" :height 1.1))))
  '(org-scheduled-today ((t (:foreground "#bc6ec5" :height 1.0)))))
 (defun dotspacemacs/emacs-custom-settings ()

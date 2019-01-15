@@ -399,8 +399,8 @@ you should place your code here."
                      (org-agenda-skip-deadline-if-done t)
                      (org-agenda-files '("~/Dropbox/org-mode/access.org"))
                      (org-agenda-sorting-strategy
-                      (quote ((agenda time-up priority-down tag-up))))
-                     (org-deadline-warning-days 7)))))
+                      (quote ((tag-up))))
+                     (org-deadline-warning-days 2)))))
           ("z" "Numenalia weekly agenda"
            ((agenda ""
                     ((org-agenda-ndays 7)

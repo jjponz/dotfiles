@@ -420,7 +420,8 @@ you should place your code here."
           (org-agenda-entry-types '(:deadline, :scheduled)) 
           (org-agenda-sorting-strategy
            (quote ((tag-up))))
-          (org-deadline-warning-days 0) ))
+          (org-deadline-warning-days 0)
+          (org-agenda-skip-scheduled-if-deadline-is-shown t) ))
         ))
 
   "Vamos a ver si conseguimos que los parentesis se coloreen como dios manda"

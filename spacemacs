@@ -400,7 +400,7 @@ you should place your code here."
                      (org-agenda-files '("~/Dropbox/org-mode/access.org"))
                      (org-agenda-sorting-strategy
                       (quote ((tag-up))))
-                     (org-deadline-warning-days 2)))))
+                     (org-deadline-warning-days 4)))))
           ("z" "Numenalia weekly agenda"
            ((agenda ""
                     ((org-agenda-ndays 7)
@@ -408,9 +408,20 @@ you should place your code here."
                      (org-agenda-skip-scheduled-if-done t)
                      (org-agenda-skip-deadline-if-done  t)
                      (org-agenda-sorting-strategy
-                      (quote ((tag-up agenda time-up priority-down))))
-                     (org-deadline-warning-days 0)))))
-    ))
+                      (quote ((tag-up))))
+                     (org-deadline-warning-days 4)))))
+        ("b" agenda "Today's access Deadlines"
+         ((org-agenda-span 'day)
+          (org-agenda-time-grid nil)
+          (org-agenda-show-all-dates nil)
+          (org-agenda-skip-scheduled-if-done t)
+          (org-agenda-skip-deadline-if-done t)
+          (org-agenda-files '("~/Dropbox/org-mode/access.org"))
+          (org-agenda-entry-types '(:deadline, :scheduled)) 
+          (org-agenda-sorting-strategy
+           (quote ((tag-up))))
+          (org-deadline-warning-days 0) ))
+        ))
 
   "Vamos a ver si conseguimos que los parentesis se coloreen como dios manda"
   (set-face-attribute 'show-paren-match nil :background "#FF0000")

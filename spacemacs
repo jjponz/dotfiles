@@ -422,6 +422,18 @@ you should place your code here."
            (quote ((tag-up))))
           (org-deadline-warning-days 0)
           (org-agenda-skip-scheduled-if-deadline-is-shown t) ))
+        ("v" agenda "Today's numenalia Deadlines"
+         ((org-agenda-span 'day)
+          (org-agenda-time-grid nil)
+          (org-agenda-show-all-dates nil)
+          (org-agenda-skip-scheduled-if-done t)
+          (org-agenda-skip-deadline-if-done t)
+          (org-agenda-files '("~/Dropbox/org-mode/numenalia.org"))
+          (org-agenda-entry-types '(:deadline, :scheduled)) 
+          (org-agenda-sorting-strategy
+           (quote ((tag-up))))
+          (org-deadline-warning-days 0)
+          (org-agenda-skip-scheduled-if-deadline-is-shown t) ))
         ))
 
   "Vamos a ver si conseguimos que los parentesis se coloreen como dios manda"

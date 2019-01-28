@@ -356,6 +356,9 @@ you should place your code here."
   "Al poner el clock in en una tarea, se pone automaticamente en doing"
   (setq org-clock-in-switch-to-state "DOING")
 
+  "C-y activa spacemacs/helm-yas"
+  (define-key evil-insert-state-map (kbd "C-y") 'spacemacs/helm-yas)
+  
   "Al poner el clockout en una tarea, se pone automaticamente en paused"
   (setq org-clock-out-switch-to-state "PAUSED")
 

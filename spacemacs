@@ -332,6 +332,9 @@ you should place your code here."
   "Añadimos flycheck a omnisharp"
   (add-hook 'csharp-mode-hook #'flycheck-mode)
 
+  "Intento que el autocompletado sea fuzzy"
+  (setq omnisharp-company-match-type 'company-match-flx)
+
   "añadimos company al modo omnisharp"
   (add-hook 'csharp-mode-hook #'company-mode)
 

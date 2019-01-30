@@ -392,6 +392,18 @@ you should place your code here."
   ;; (setq org-agenda-skip-scheduled-if-done t
   ;;       org-agenda-skip-deadline-if-done  t)
 
+  "Configuración inicial del refile"
+  (setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                   (org-agenda-files :maxlevel . 9))))
+
+  "Creación de headers"
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
+
+  "ponemos el archivo de agenda al que se va a hacer refile"
+  (setq org-refile-use-outline-path 'file)
+
+  (setq org-outline-path-complete-in-steps nil)
+
   "Vistas para las agendas"
   (setq org-agenda-custom-commands
         `(

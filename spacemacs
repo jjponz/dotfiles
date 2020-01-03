@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     html
      javascript
      markdown
      yaml
@@ -64,12 +65,13 @@ values."
      ansible
      puppet
      docker
+     elixir
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(solarized-theme doom-themes editorconfig flycheck-mypy importmagic)
+   dotspacemacs-additional-packages '(solarized-theme doom-themes editorconfig flycheck-mypy importmagic all-the-icons flatui-theme)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -149,7 +151,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Ubuntu Mono"
-                               :size 20
+                               :size 25
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -275,7 +277,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers `relative
+   dotspacemacs-line-numbers `t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -325,6 +327,9 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  "Intenamos que el go to definition vaya correctamente en todos los modos"
+  (setq spacemacs-default-jump-handlers
+        (remove 'evil-goto-definition spacemacs-default-jump-handlers))
   "Configuramos mypy"
   (require 'flycheck-mypy)
   (flycheck-add-next-checker 'python-flake8 'python-mypy t)
@@ -484,12 +489,13 @@ you should place your code here."
 
 
   "Configuración de doom-themes"
-  ;; (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-  ;;       doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
   (doom-themes-visual-bell-config)
   (doom-themes-neotree-config) ; all-the-icons fonts must be installed!
   (doom-themes-org-config) ; Corrects (and improves) org-mode's native fontification.
-;; esto es necesario para correr el doom-dracula  (load-theme 'doom-dracula t)
+  ;; esto es necesario para correr el doom-dracula
+  (load-theme 'flatui)
 
   "Configuración de los lenguajes de google-translate"
   (setq google-translate-translation-directions-alist
@@ -513,9 +519,11 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("392395ee6e6844aec5a76ca4f5c820b97119ddc5290f4e0f58b38c9748181e8d" default))
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   '(importmagic lv flycheck-mypy transient dockerfile-mode docker tablist docker-tramp editorconfig livid-mode skewer-mode json-mode js2-refactor multiple-cursors company-tern web-beautify simple-httpd json-snatcher json-reformat js2-mode js-doc tern coffee-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake puppet-mode minitest chruby bundler inf-ruby mmm-mode markdown-toc markdown-mode gh-md dash jinja2-mode company-ansible ansible-doc ansible doom-city-lights-theme doom-themes all-the-icons memoize yaml-mode jedi jedi-core python-environment epc ctable concurrent deferred elpy find-file-in-project ivy pony-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic company-quickhelp powerline spinner org-category-capture alert log4e gntp org-plus-contrib shut-up hydra parent-mode projectile request gitignore-mode fringe-helper git-gutter+ git-gutter flyspell-correct pos-tip flycheck pkg-info epl flx magit-popup git-commit let-alist with-editor smartparens iedit anzu evil goto-chg undo-tree highlight f s csharp-mode company bind-map bind-key yasnippet packed helm avy helm-core async auto-complete popup helm-projectile magit xterm-color ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org sql-indent spaceline solarized-theme smeargle shell-pop restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file omnisharp neotree mwim multi-term move-text magit-gitflow macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ghub fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump diminish diff-hl define-word company-statistics column-enforce-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+   '(flatui-theme ob-elixir flycheck-mix flycheck-credo alchemist elixir-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data importmagic lv flycheck-mypy transient dockerfile-mode docker tablist docker-tramp editorconfig livid-mode skewer-mode json-mode js2-refactor multiple-cursors company-tern web-beautify simple-httpd json-snatcher json-reformat js2-mode js-doc tern coffee-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake puppet-mode minitest chruby bundler inf-ruby mmm-mode markdown-toc markdown-mode gh-md dash jinja2-mode company-ansible ansible-doc ansible doom-city-lights-theme doom-themes all-the-icons memoize yaml-mode jedi jedi-core python-environment epc ctable concurrent deferred elpy find-file-in-project ivy pony-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic company-quickhelp powerline spinner org-category-capture alert log4e gntp org-plus-contrib shut-up hydra parent-mode projectile request gitignore-mode fringe-helper git-gutter+ git-gutter flyspell-correct pos-tip flycheck pkg-info epl flx magit-popup git-commit let-alist with-editor smartparens iedit anzu evil goto-chg undo-tree highlight f s csharp-mode company bind-map bind-key yasnippet packed helm avy helm-core async auto-complete popup helm-projectile magit xterm-color ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org sql-indent spaceline solarized-theme smeargle shell-pop restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file omnisharp neotree mwim multi-term move-text magit-gitflow macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ghub fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump diminish diff-hl define-word company-statistics column-enforce-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

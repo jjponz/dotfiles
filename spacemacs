@@ -48,7 +48,6 @@ values."
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-sort-by-usage t
                       )
-     
      better-defaults
      emacs-lisp
      git
@@ -65,13 +64,16 @@ values."
      ansible
      puppet
      docker
-     elixir
+     (elixir :variables elixir-backend 'alchemist)
+     lsp
+     restclient
+     neotree
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(solarized-theme doom-themes editorconfig flycheck-mypy importmagic all-the-icons flatui-theme treemacs treemacs-evil)
+   dotspacemacs-additional-packages '(solarized-theme doom-themes editorconfig flycheck-mypy importmagic all-the-icons flatui-theme centaur-tabs)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -144,7 +146,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         ;;solarized-dark
+                         solarized-dark
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -259,7 +261,7 @@ values."
    ;; If non nil show the color guide hint for transient state keys. (default t)
    dotspacemacs-show-transient-state-color-guide t
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
@@ -327,18 +329,52 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  "Configuramos treemacs"
-  (setq treemacs-use-follow-mode 'tag)
+  "Configuramos neotree"
+  (setq neo-theme 'icons)
+
+  "Activamos all the icons"
+  (require 'all-the-icons)
+
+  "configuramos centau-tabs"
+  "Con esto habilitado parece que revienta emacs.. se me hac freeze cada dos por tres"
+  ;; (require 'centaur-tabs)
+  ;; (setq centaur-tabs-style "bar"
+  ;;       centaur-tabs-height 39
+  ;;       centaur-tabs-set-icons t
+  ;;       centaur-tabs-set-bar 'under
+  ;;       centaur-tabs-show-navigation-buttons t
+  ;;       centaur-tabs-set-modified-marker t
+  ;;       centaur-tabs-modified-marker "*"
+  ;;       x-underline-at-descent-line t)
+  ;; (centaur-tabs-headline-match)
+
+  ;; (define-key evil-normal-state-map (kbd "g t") 'centaur-tabs-forward)
+  ;; (define-key evil-normal-state-map (kbd "g T") 'centaur-tabs-backward)
+  ;; (centaur-tabs-mode t)
+
+  ;; (defun centaur-tabs-hide-tab (x)
+  ;;   (let ((name (format "%s" x)))
+	;;     (or
+	;;      (string-prefix-p "*epc" name)
+	;;      (string-prefix-p "*helm" name)
+	;;      (string-prefix-p "*Compile-Log*" name)
+	;;      (string-prefix-p "*lsp" name)
+	;;      (and (string-prefix-p "magit" name)
+	;;           (not (file-name-extension name)))
+	;;      )))
 
   "Intenamos que el go to definition vaya correctamente en todos los modos"
   (setq spacemacs-default-jump-handlers
         (remove 'evil-goto-definition spacemacs-default-jump-handlers))
+
   "Configuramos mypy"
   (require 'flycheck-mypy)
   (flycheck-add-next-checker 'python-flake8 'python-mypy t)
 
   "Configuramos importmagic"
-  (add-hook 'python-mode-hook 'importmagic-mode)
+  "Lo deshabilito a ver si los problemas de estabilidad es por culpa de esto"
+  ;; (add-hook 'python-mode-hook 'importmagic-mode)
+
   " Establecemos el backend para company"
   (eval-after-load
       'company
@@ -498,7 +534,7 @@ you should place your code here."
   (doom-themes-neotree-config) ; all-the-icons fonts must be installed!
   (doom-themes-org-config) ; Corrects (and improves) org-mode's native fontification.
   ;; esto es necesario para correr el doom-dracula
-  (load-theme 'flatui)
+  ;; (load-theme 'flatui)
 
   "Configuración de los lenguajes de google-translate"
   (setq google-translate-translation-directions-alist
@@ -526,7 +562,7 @@ you should place your code here."
    '("392395ee6e6844aec5a76ca4f5c820b97119ddc5290f4e0f58b38c9748181e8d" default))
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   '(treemacs-evil treemacs ht pfuture flatui-theme ob-elixir flycheck-mix flycheck-credo alchemist elixir-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data importmagic lv flycheck-mypy transient dockerfile-mode docker tablist docker-tramp editorconfig livid-mode skewer-mode json-mode js2-refactor multiple-cursors company-tern web-beautify simple-httpd json-snatcher json-reformat js2-mode js-doc tern coffee-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake puppet-mode minitest chruby bundler inf-ruby mmm-mode markdown-toc markdown-mode gh-md dash jinja2-mode company-ansible ansible-doc ansible doom-city-lights-theme doom-themes all-the-icons memoize yaml-mode jedi jedi-core python-environment epc ctable concurrent deferred elpy find-file-in-project ivy pony-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic company-quickhelp powerline spinner org-category-capture alert log4e gntp org-plus-contrib shut-up hydra parent-mode projectile request gitignore-mode fringe-helper git-gutter+ git-gutter flyspell-correct pos-tip flycheck pkg-info epl flx magit-popup git-commit let-alist with-editor smartparens iedit anzu evil goto-chg undo-tree highlight f s csharp-mode company bind-map bind-key yasnippet packed helm avy helm-core async auto-complete popup helm-projectile magit xterm-color ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org sql-indent spaceline solarized-theme smeargle shell-pop restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file omnisharp neotree mwim multi-term move-text magit-gitflow macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ghub fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump diminish diff-hl define-word company-statistics column-enforce-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+   '(ht pfuture flatui-theme ob-elixir flycheck-mix flycheck-credo alchemist elixir-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data importmagic lv flycheck-mypy transient dockerfile-mode docker tablist docker-tramp editorconfig livid-mode skewer-mode json-mode js2-refactor multiple-cursors company-tern web-beautify simple-httpd json-snatcher json-reformat js2-mode js-doc tern coffee-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake puppet-mode minitest chruby bundler inf-ruby mmm-mode markdown-toc markdown-mode gh-md dash jinja2-mode company-ansible ansible-doc ansible doom-city-lights-theme doom-themes all-the-icons memoize yaml-mode jedi jedi-core python-environment epc ctable concurrent deferred elpy find-file-in-project ivy pony-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic company-quickhelp powerline spinner org-category-capture alert log4e gntp org-plus-contrib shut-up hydra parent-mode projectile request gitignore-mode fringe-helper git-gutter+ git-gutter flyspell-correct pos-tip flycheck pkg-info epl flx magit-popup git-commit let-alist with-editor smartparens iedit anzu evil goto-chg undo-tree highlight f s csharp-mode company bind-map bind-key yasnippet packed helm avy helm-core async auto-complete popup helm-projectile magit xterm-color ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org sql-indent spaceline solarized-theme smeargle shell-pop restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file omnisharp neotree mwim multi-term move-text magit-gitflow macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ghub fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump diminish diff-hl define-word company-statistics column-enforce-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -557,3 +593,6 @@ This function is called at the very end of Spacemacs initialization."
  '(org-level-2 ((t (:inherit bold :foreground "#2d9574" :weight normal :height 1.1))))
  '(org-scheduled-previously ((t (:foreground "gold" :slant italic)))))
 )
+
+
+

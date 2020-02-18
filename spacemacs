@@ -30,7 +30,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(csv
      html
      javascript
      markdown
@@ -336,10 +336,10 @@ you should place your code here."
   (require 'all-the-icons)
 
   "configuramos centau-tabs"
-  "Con esto habilitado parece que revienta emacs.. se me hac freeze cada dos por tres"
+  "Centau-tabs tiene un bug que me freezea el sistema"
   ;; (require 'centaur-tabs)
   ;; (setq centaur-tabs-style "bar"
-  ;;       centaur-tabs-height 39
+  ;;       centaur-tabs-height 30
   ;;       centaur-tabs-set-icons t
   ;;       centaur-tabs-set-bar 'under
   ;;       centaur-tabs-show-navigation-buttons t
@@ -370,10 +370,6 @@ you should place your code here."
   "Configuramos mypy"
   (require 'flycheck-mypy)
   (flycheck-add-next-checker 'python-flake8 'python-mypy t)
-
-  "Configuramos importmagic"
-  "Lo deshabilito a ver si los problemas de estabilidad es por culpa de esto"
-  ;; (add-hook 'python-mode-hook 'importmagic-mode)
 
   " Establecemos el backend para company"
   (eval-after-load

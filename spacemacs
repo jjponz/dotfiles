@@ -68,6 +68,11 @@ values."
      lsp
      restclient
      neotree
+     react
+     (javascript :variables
+                 js2-basic-offset 2
+                 js-indent-level 2
+                 javascript-backend 'tern)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -146,6 +151,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         doom-material
                          solarized-dark
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -337,31 +343,31 @@ you should place your code here."
 
   "configuramos centau-tabs"
   "Centau-tabs tiene un bug que me freezea el sistema"
-  ;; (require 'centaur-tabs)
-  ;; (setq centaur-tabs-style "bar"
-  ;;       centaur-tabs-height 30
-  ;;       centaur-tabs-set-icons t
-  ;;       centaur-tabs-set-bar 'under
-  ;;       centaur-tabs-show-navigation-buttons t
-  ;;       centaur-tabs-set-modified-marker t
-  ;;       centaur-tabs-modified-marker "*"
-  ;;       x-underline-at-descent-line t)
-  ;; (centaur-tabs-headline-match)
+  (require 'centaur-tabs)
+  (setq centaur-tabs-style "bar"
+        centaur-tabs-height 30
+        centaur-tabs-set-icons t
+        centaur-tabs-set-bar 'under
+        centaur-tabs-show-navigation-buttons t
+        centaur-tabs-set-modified-marker t
+        centaur-tabs-modified-marker "*"
+        x-underline-at-descent-line t)
+  (centaur-tabs-headline-match)
 
-  ;; (define-key evil-normal-state-map (kbd "g t") 'centaur-tabs-forward)
-  ;; (define-key evil-normal-state-map (kbd "g T") 'centaur-tabs-backward)
-  ;; (centaur-tabs-mode t)
+  (define-key evil-normal-state-map (kbd "g t") 'centaur-tabs-forward)
+  (define-key evil-normal-state-map (kbd "g T") 'centaur-tabs-backward)
+  (centaur-tabs-mode t)
 
-  ;; (defun centaur-tabs-hide-tab (x)
-  ;;   (let ((name (format "%s" x)))
-	;;     (or
-	;;      (string-prefix-p "*epc" name)
-	;;      (string-prefix-p "*helm" name)
-	;;      (string-prefix-p "*Compile-Log*" name)
-	;;      (string-prefix-p "*lsp" name)
-	;;      (and (string-prefix-p "magit" name)
-	;;           (not (file-name-extension name)))
-	;;      )))
+  (defun centaur-tabs-hide-tab (x)
+    (let ((name (format "%s" x)))
+	    (or
+	     (string-prefix-p "*epc" name)
+	     (string-prefix-p "*helm" name)
+	     (string-prefix-p "*Compile-Log*" name)
+	     (string-prefix-p "*lsp" name)
+	     (and (string-prefix-p "magit" name)
+	          (not (file-name-extension name)))
+	     )))
 
   "Intenamos que el go to definition vaya correctamente en todos los modos"
   (setq spacemacs-default-jump-handlers
